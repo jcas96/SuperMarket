@@ -1,6 +1,8 @@
 import java.util.Random;
 
 public class FastShopper extends Shopper{
+	//creates a subclass of shopper so all the abstract methods
+	//from Shopper.java and ShoppingTimeRemaining.java will be implemented
 	public static int fastShopperCounter =0;
 	public static int TIMEWITHCHECKER=1;
 	private String fastShopperID;
@@ -63,7 +65,10 @@ public class FastShopper extends Shopper{
 	}
 	
 	Random randy;
-	
+
+	//FastShopper Constructor that sets the type of shopper through the Shopper super class
+	//and using the already instantiated fastShopperCounter you create a random obect
+	//then ID, time, timeshopping, and time remaining are set 
 	FastShopper(int input){
 		super("FastShopper");
 		randy = new Random(fastShopperCounter);
@@ -77,7 +82,8 @@ public class FastShopper extends Shopper{
 		fastShopperCounter++;
 		fastShopperID =(getShopperType()+fastShopperCounter);
 	}
-	
+
+	//uses the randy object created in the constructor to set the time shopping from 1-6
 	public void setTimeShopping() {
 		timeShopping = randy.nextInt(1,7);
 	}
@@ -86,14 +92,16 @@ public class FastShopper extends Shopper{
 		timeOutOfCheckoutLine = out;
 		calculateFinalDurations();
 	}
-	
+
+
+	//calculates how long a shopper spent inside the store
 	public void calculateFinalDurations() {
 		endTime = timeOutOfCheckoutLine + TIMEWITHCHECKER;
 		totalTimeCheckingOut = Math.abs(endTime-timeIntoCheckoutLine);
 		totalTimeInStore = Math.abs(endTime-startTime);
 	}
 
-	
+	//uses String.format format to print out the values from fastShopper
 	@Override
 	public String toString(){
 		return String.format("%-22S%-11d%-16d%-16d%-16d%-16d", fastShopperID,startTime,endTime,timeShopping,totalTimeCheckingOut,totalTimeInStore);
