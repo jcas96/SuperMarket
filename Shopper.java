@@ -1,5 +1,5 @@
 abstract class Shopper implements ShoppingTimeRemaining{
-	//Abstract Shopper class created
+	//Abstract Shopper class created while implementing the previous interface
 	String shopperType;
 	Shopper(){
 		setShopperType("");
@@ -18,7 +18,7 @@ abstract class Shopper implements ShoppingTimeRemaining{
 		return shopperType;
 	}
 
-	//previous abstract methods are made sure to be implemented
+	//creates 2 more abstract methods to be used in next classes
 	public abstract void setTimeIntoCheckoutLine(int v);
 	public abstract int getTotalTimeCheckingOut();
 }
